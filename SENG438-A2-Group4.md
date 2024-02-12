@@ -13,8 +13,7 @@ The goal of this assignment is to learn how to develop proper unit tests for a s
 
 # 2 Detailed description of unit test strategy
 
-Re-reading lecture slides we created our testing plan based on black-box testing since we were not given the contents of the JFreeChart
-We will be following the examples introduced in lecture slides. We are testing all 5 methods within the DataUtilities class, and chose 5 methods from the Range class that required no mocking. For the Range class, we have decided to not test the Range constructor. This means we will create a new Range object that's valid and error free for each test. All the testing will be focused on methods that are related to the Range object that has already been created.
+Re-reading lecture slides we created our testing plan based on black-box testing since we were not given the contents of the JFreeChart. Testing 5 methods from  the DataUtilities class, and chose 5 methods from the Range class that required no mocking. For the Range class we desided to do seperate in range and out range tests for all of the 5 functions as well as outlier tests for a few extra cases. We do not test the constructor since the initialization is before the test methods, assuming that the Range objects have no errors upon creation. 
 
 **Class DataUtilities**
 NOTE: Valid meaning valid input for the function being tested.
