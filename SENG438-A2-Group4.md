@@ -157,21 +157,38 @@ Testing **contains()**
 | containsMinTest |Testing the finite ranges from built in Double class| returns: True|
 | containsMaxTest |Testing the finite ranges from built in Double class | returns: True|
 
-| getUpperBound | getUpperBoundPositiveValue | G1; NOM; |
-| getUpperBound | getUpperBoundNegativeValue | G2; NOM; |
-| getUpperBound | getUpperBoundZeroValue | G3; NOM; |
-| getUpperBound | getUpperBoundMinMaxTest | G1; G2; UB; LB; |
-| getLowerBound | getLowerBoundPositiveValue | H1; NOM; |
-| getLowerBound | getLowerBoundNegativeValue | H2; NOM; |
-| getLowerBound | getLowerBoundZeroValue | H3; NOM; |
-| getLowerBound | getLowerBoundMinMaxTest | H1; H2; UB; LB; |
+Testing **constrain()**
 
-| constrain | constrainShouldBePositiveValue | J1; NOM; |
-| constrain | constrainShouldBeNegativeValue | J2; NOM; |
-| constrain | constrainShouldBeZero | J3; NOM; |
-| constrain | constrainShouldBeUpperBoundaryValue | J4; AUB; |
-| constrain | constrainShouldBeLowerBoundaryValue | J5; BLB; |
-| constrain | constrainMinMaxTest | J1; J2; UB; LB; |
+| Testing Function | Testing Strategy | Expected Outcomes | 
+| --- | --- | --- |
+| constrainShouldBePositiveValue | Input between valid range values. Range: 0 to 10 | returns: 5.4 |
+| constrainShouldBeNegativeValue | Input between valid range values. Range: -10 to 0 | returns: -5.4 
+| constrainShouldBeZero | Input between valid range values. Range: 0 to 10 | returns: 10 |
+
+| constrainShouldBeUpperBoundaryValue | Input not between valid range values. Range: 0 to 10 | returns: 10|
+| constrainShouldBeLowerBoundaryValue |  Input not between valid range values. Range: 0 to 10 | returns: 0|
+| constrainMaxTest |Testing the finite ranges from built in Double class | returns: finite Max value|
+| constrainMinTest |Testing the finite ranges from built in Double class | returns: finite Min value|
+
+Testing **getUpperBound()**
+
+| Testing Function | Testing Strategy | Expected Outcomes | 
+| --- | --- | --- |
+| getUpperBoundPositiveValue | Between valid range values. Range: 0 to 10  | returuns: 10 |
+| getUpperBoundNegativeValue | Between valid range values. Range: 0 to 10  | returuns: 10 |
+| getUpperBoundZeroValue | Between valid range values. Range: -10 to 0  | returuns: 0 |
+| getUpperBoundMinMaxTest | Between valid range values. Range: from built in Double class  | returns: finite max value |
+
+Testing **getLowerBound()**
+
+| Testing Function | Testing Strategy | Expected Outcomes | 
+| --- | --- | --- |
+| getLowerBoundPositiveValue | Between valid range values. Range: 1 to 10  | returuns: 1 |
+| getLowerBoundNegativeValue | Between valid range values. Range: -10 to 0  | returuns: -10 |
+| getLowerBoundZeroValue | Between valid range values. Range: 0 to 10  | returuns: 0 |
+| getLowerBoundMinMaxTest | Between valid range values. Range: from built in Double class  | returns: finite min value |
+
+Note on Mocking:
 
 Mocking is an easy to use tool that allows us to simulate a response from another interface. The benefit is that it allowed us to set the return value to what we desired. In an integrated testing scenario, we needed to set up the interface which takes time and potentially introduces more bugs to our code than intended. One drawback we noticed is that the mocked object may not fully represent the behavior of the interface. Because we are only simulating certain responds we may miss other functions that could alter the result. Mocking is also hard to use. We feel this is introduced by black-box testing. We are trying to mimic a interface's response, but with no access to the source code, mocking becomes harder as we have to figure out what we need in the return type. For example, calculateColumnTotal(Values2D data, int column) does not tell us we need to return getRowCount() and getValue(int row, int column) from Values2D in order to make the calculations work. 
 
