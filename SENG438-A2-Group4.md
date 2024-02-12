@@ -20,7 +20,7 @@ NOTE: Valid meaning valid input for the function being tested.
       Invalid meaning an invalid input for the function being tested (could be true or false         based on the expected output)
       
 double calculateColumnTotal(Values2D data, int column)
-- A1. Data contains positive value, valid
+- Data contains positive value, valid
 - A2. Data contains negative value, valid
 - A3. Data contains zero value, valid
 - A4. Data contains null value, invalid
@@ -82,6 +82,7 @@ Returns true if the specified value is within the range and false otherwise.
 - I5. Value is within BLB of Range, invalid
 - I6. Edge Value is within bounds, valid
 
+
 double constrain(double value):
 Returns the value within the range that is closest to the specified value.
 - J1. Data contains positive value, valid
@@ -98,45 +99,62 @@ Returns the value within the range that is closest to the specified value.
 
 # 3 Test cases developed
 
-Based on our test strategy, we have the follow test methods.
+Based on our test strategy, we have the follow test methods. Any parts of our actual code that are not included here are not important for our testing outcomes and wil be improvised when making the JMock tests on eclipse. The finite min and max values are from the built in Double class to test the limits of double variables.
 
 **Class DataUtilities**
 
-| Testing Function | Testing Strategy | Expected Outcomes | 
+Testing **calculateColumnTotal()**
+
+| Testing Function | Equivalent Classes | Expected Outcomes | 
 | --- | --- | --- |
-| calculateColumnTotal | calculateColumnTotalTest | A1; NOM; column LB = 0; |
-| calculateColumnTotal | calculateColumnTotalNegativeTest | A2; NOM; column LB = 0; |
-| calculateColumnTotal | calculateColumnTotalZeroTest | A3; column LB = 0; |
-| calculateColumnTotal | calculateColumnTotalNullTest | A4; column LB = 0; |
-| calculateColumnTotal | calculateColumnTotalExceptionTest | A5; column LB = 0; |
-| calculateColumnTotal | calculateColumnTotalMinMaxTest | A1; A2; UB; LB |
-| calculateColumnTotal | calculateColumnTotalColumnOneTest | A1; NOM; |
-| calculateRowTotal | calculateRowTotalTest | B1; NOM; row LB = 0; |
-| calculateRowTotal | calculateRowTotalNegativeTest | B2; NOM; row LB = 0; |
-| calculateRowTotal | calculateRowTotalZeroTest | B3; row LB = 0; |
-| calculateRowTotal | calculateRowTotalNullTest | B4; row LB = 0; |
-| calculateRowTotal | calculateRowTotalExceptionTest | B5; row LB = 0; |
-| calculateRowTotal | calculateRowMinMaxTest | B1; B2; UB; LB; row LB = 0; |
-| calculateRowTotal | calculateRowTotalRowOneTest | B1; NOM; |
-| createNumberArray | createNumberArrayTest | C1; NOM |
-| createNumberArray | createNumberArrayEmptyTest | C2; |
-| createNumberArray | createNumberArrayNullTest | C3; |
-| createNumberArray | createNumberArrayMinMaxTest | C1; NOM; |
-| createNumberArray2D | createNumberArray2DTest | D1; NOM; |
-| createNumberArray2D | createNumberArray2DEmptyTest | D2; |
-| createNumberArray2D | createNumberArray2DNullTest | D3; |
-| createNumberArray2D | createNumberArray2DMinMaxTest | D1; NOM; |
-| getCumulativePercentages | getCumulativePercentagesTest | E1; NOM; |
-| getCumulativePercentages | getCumulativePercentagesEmptyTest | E2; |
-| getCumulativePercentages | getCumulativePercentagesZeroTest | E3; LB = 0; |
-| getCumulativePercentages | getCumulativePercentagesNullTest | E4; |
-| getCumulativePercentages | getCumulativePercentagesExceptionTest | E5; |
-| getCumulativePercentages | getCumulativePercentagesMinMaxTest | E1; UB; LB = 0; |
+ calculateColumnTotalTest | Mockery table values: (0, 0): 7.5, (1,0): 2.5 , using col 0 | returns: 10 |
+| calculateColumnTotalNegativeTest | Mockery table values: (0, 0): -7.5, (1,0): -7.5 , using col 0 | returns: -15 |
+| calculateColumnTotalZeroTest | Mockery table values: (0, 0): 0, (1,0): 0 , using col 0 | returns: 0|
+| calculateColumnTotalNullTest | Mockery table values: (0, 0): null, (1,0): null , using col 0 | returns: 0|
+| calculateColumnTotalExceptionTest | Mockery table values: (0, 0): 'a', (1,0): 7.5 , using col 0 | returns: should call InvalidParameterException|
+| calculateColumnTotalMinMaxTest | Mockery table values:  (0, 0): finite min value, (1,0): finite max value , using col 0 | returns: sum of max and min values|
+| calculateColumnTotalColumnOneTest | Mockery table values (3 by 2):  (0, 1): 3.5, (1, 1): 4.5, (2, 1): 5.5, using col 1 | returns: 13.5|
+
+Testing **calculateRowTotal()**
+
+| Testing Function | Equivalent Classes | Expected Outcomes | 
+| --- | --- | --- |
+| calculateRowTotalTest | Mockery table values: (0, 0): 7.5, (0,1): 2.5 , using row 0 | returns: 10 |
+| calculateRowTotalNegativeTest | Mockery table values: (0, 0): -7.5, (0,1): -7.5 , using row 0 | returns: -15 |
+| calculateRowTotalZeroTest | Mockery table values: (0, 0): 0, (0,1): 0 , using row 0 | returns: 0 |
+| calculateRowTotalNullTest | Mockery table values: (0, 0): null, (0,1): null , using row 0 | returns: 0|
+| calculateRowTotalExceptionTest | Mockery table values: (0, 0): 'a', (0,1): 7.5 , using row 0 | returns: should call InvalidParameterException|
+| calculateRowMinMaxTest | Mockery table values: (0, 0): finite min value, (0,1): finite max value , using row 0 | returns: sum of max and min values|
+| calculateRowTotalRowOneTest | Mockery table values (2 by 3): (1, 0):3.5 , (1,1): 4.5 , (1,2): 5.5, using row 0 | returns: 13.5|
+
+Testing **createNumberArray()**
+
+| Testing Function | Equivalent Classes | Expected Outcomes | 
+| --- | --- | --- |
+| createNumberArrayTest | data = { 1.0, 2.5, -3.5, 4.5, 0.0 } | length: 5, for loop succeeds tests |
+| createNumberArrayEmptyTest | data = {} | length: 0 |
+| createNumberArrayNullTest | data = null | calls InvalidParameterException|
+| createNumberArrayMinMaxTest | data = { using min and max values from Double built in class}; | length: compare data and result, for loop succeeds tests|
+| createNumberArray2DTest | data = { { 1.0, -2.5, 3.5, 0 }, { -5.0, 6.5, 7.5, 8.5 } }; | length: dataLength, for loop succeeds tests for all rows and cols |
+| createNumberArray2DEmptyTest |  data = {} | length: 0 |
+| createNumberArray2DNullTest | data = null; | calls InvalidParameterException|
+| createNumberArray2DMinMaxTest |  data = { 2D array using min and max values from Double built in class} | length: compare data and result, for loop succeeds tests |
+
+Testing **getCumulativePercentages()**
+
+| Testing Function | Equivalent Classes | Expected Outcomes | 
+| --- | --- | --- |
+| getCumulativePercentagesTest | key0: 5, key1: 9 key2: 2 | results key0: 0.3125, key1: 0.875, key2: 1.0 |
+| getCumulativePercentagesEmptyTest |  items: 0 | results: 0  |
+| getCumulativePercentagesZeroTest |  key0: 0, key1: 0 | results key0: 0.0, key1: 0.0 |
+| getCumulativePercentagesNullTest |  key0: 5, key1: 9 key2: 2 | results key0: 0.3125, key1: 0.875, key2: 1.0 |
+| getCumulativePercentagesExceptionTest | getCumulativePercentagesExceptionTest | E5; |
+| getCumulativePercentagesMinMaxTest | getCumulativePercentagesMinMaxTest | E1; UB; LB = 0; |
 
 **Class Range**
 Testing **getCentralValue()**
 
-| Testing Function | Testing Strategy | Expected Outcomes | 
+| Testing Function | Equivalent Classes | Expected Outcomes | 
 | --- | --- | --- |
 | centralValueShouldBeZero | Between valid range values. Range: -1 to 1 | returns: 0 |
 | centralValueShouldBePositive | Between valid range values. Range: 0 to 10 | returns: 5 |
@@ -146,7 +164,7 @@ Testing **getCentralValue()**
 
 Testing **contains()**
 
-| Testing Function | Testing Strategy | Expected Outcomes | 
+| Testing Function | Equivalent Classes | Expected Outcomes | 
 | --- | --- | --- |
 | containsEdgeValue | Between valid range values. Range: -1 to 1 | returns: True |
 | containsZeroValue | Between valid range values. Range: -1 to 1 | returns: True|
@@ -159,7 +177,7 @@ Testing **contains()**
 
 Testing **constrain()**
 
-| Testing Function | Testing Strategy | Expected Outcomes | 
+| Testing Function | Equivalent Classes | Expected Outcomes | 
 | --- | --- | --- |
 | constrainShouldBePositiveValue | Input between valid range values. Range: 0 to 10 | returns: 5.4 |
 | constrainShouldBeNegativeValue | Input between valid range values. Range: -10 to 0 | returns: -5.4 
@@ -171,7 +189,7 @@ Testing **constrain()**
 
 Testing **getUpperBound()**
 
-| Testing Function | Testing Strategy | Expected Outcomes | 
+| Testing Function | Equivalent Classes | Expected Outcomes | 
 | --- | --- | --- |
 | getUpperBoundPositiveValue | Between valid range values. Range: 0 to 10  | returuns: 10 |
 | getUpperBoundNegativeValue | Between valid range values. Range: 0 to 10  | returuns: 10 |
@@ -180,7 +198,7 @@ Testing **getUpperBound()**
 
 Testing **getLowerBound()**
 
-| Testing Function | Testing Strategy | Expected Outcomes | 
+| Testing Function | Equivalent Classes | Expected Outcomes | 
 | --- | --- | --- |
 | getLowerBoundPositiveValue | Between valid range values. Range: 1 to 10  | returuns: 1 |
 | getLowerBoundNegativeValue | Between valid range values. Range: -10 to 0  | returuns: -10 |
