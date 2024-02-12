@@ -21,8 +21,9 @@ We used black box testing strategies like equivalence testing and bubndary value
 
 **Developing Test Cases**
 
-Based on our test strategy, we have the follow test methods. Any parts of our actual code that are not included here are not important for our testing outcomes and wil be improvised when making the JMock tests on eclipse. The finite min and max values are from the built in Double class to test the limits of double variables.
+Based on our test strategy, we have the follow test methods. The finite min and max values are from the built in Double class to test the limits of double variables.
 
+NOTE: Any parts of our actual code that are not included here are not important for our testing outcomes and wil be improvised when making the JMock tests on eclipse.
 
 
 **Class DataUtilities Test Plan**
