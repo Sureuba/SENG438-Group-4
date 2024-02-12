@@ -9,97 +9,17 @@
 
 # 1 Introduction
 
-The goal of this assignment is to learn how to develop proper unit tests for a system under test. We will be focusing on black-box testing using Equivalence Class Testing (ECT) and Boundary Value Testing (BVT). We will be using JUnit along with JMock to create test cases.
+The goal of this assignment is to learn how to use black box testing methodolies for Range Class Testing and DataUtiltiies Class Testing through developing proper unit tests for a system under test. We focused on Equivalence Class Testing (ECT) and Boundary Value Testing (BVT). We also used JUnit along with JMock to create test cases.
 
 # 2 Detailed description of unit test strategy
 
-Re-reading lecture slides we created our testing plan based on black-box testing since we were not given the contents of the JFreeChart. Testing 5 methods from  the DataUtilities class, and chose 5 methods from the Range class that required no mocking. For the Range class we desided to do seperate in range and out range tests for all of the 5 functions as well as outlier tests for a few extra cases. We do not test the constructor since the initialization is before the test methods, assuming that the Range objects have no errors upon creation. 
-
-**Class DataUtilities**
-NOTE: Valid meaning valid input for the function being tested.
-      Invalid meaning an invalid input for the function being tested (could be true or false         based on the expected output)
-      
-double calculateColumnTotal(Values2D data, int column)
-- Data contains positive value, valid
-- A2. Data contains negative value, valid
-- A3. Data contains zero value, valid
-- A4. Data contains null value, invalid
-- A5. Data contains invalid data object, invalid
-
-double calculateRowTotal(Values2D data, int row)
-- B1. Data contains positive value, valid
-- B2. Data contains negative value, valid
-- B3. Data contains zero value, valid
-- B4. Data contains null value, invalid
-- B5. Data contains invalid data object, invalid
-
-java.lang.Number[] createNumberArray(double[] data)
-- C1. Data contains normal value, valid (contains positive, negative, and zero values)
-- C2. Data is empty, valid
-- C3. Data contains null value, invalid
-
-java.lang.Number[][] createNumberArray2D(double[][] data)
-- D1. Data contains normal value, valid (contains positive, negative, and zero values)
-- D2. Data is empty, valid
-- D3. Data contains null value, invalid
-
-*Negative values in cumulative percentages makes no sense as we cannot have negative percentages.* <br />
-KeyedValues getCumulativePercentages(KeyedValues data)
-- E1. Data contains positive value, valid
-- E2. Data is empty, valid
-- E3. Data contains zero value, valid
-- E4. Data contains null value, invalid
-- E5. Data contains invalid data object, invalid
-
-**Class Range**
-(create testing table!)
-
-double getCentralValue():
-Returns the central (or median) value for the range.
-- F1. Data contains positive value, valid 
-- F2. Data contains negative value, valid
-- F3. Data contains zero value, valid
-- F4. Data contains decimal (double) value, valid
-
-double getUpperBound():
-Returns the upper bound for the range.
-- G1. Data contains positive value, valid
-- G2. Data contains negative value, valid
-- G3. Data contains zero value, valid
-
-double getLowerBound():
-Returns the lower bound for the range.
-- H1. Data contains positive value, valid
-- H2. Data contains negative value, valid
-- H3. Data contains zero value, valid
-
-boolean contains(double value):
-Returns true if the specified value is within the range and false otherwise.
-- I1. Data contains positive value, valid
-- I2. Data contains negative value, valid
-- I3. Data contains zero value, valid
-- I4. Value is within AUB of Range, invalid
-- I5. Value is within BLB of Range, invalid
-- I6. Edge Value is within bounds, valid
+Re-reading lecture slides, we created our testing plan based on black-box testing since we were not given the contents of the JFreeChart. Testing 5 methods from  the DataUtilities class, and chose 5 methods from the Range class that required no mocking. For the Range class we desided to do seperate in range and out range tests for all of the 5 functions as well as outlier tests for a few extra cases. We do not test the constructor since the initialization is before the test methods, assuming that the Range objects have no errors upon creation.
 
 
-double constrain(double value):
-Returns the value within the range that is closest to the specified value.
-- J1. Data contains positive value, valid
-- J2. Data contains negative value, valid
-- J3. Data contains zero value, valid
-- J4. Value is within AUB of Range, valid
-- J5. Value is within BLB of Range, valid
-
-*Since all methods uses double as their variable type, there is no real boundary other than testing the methods can handle the min and max values for the double data type unless otherwise specified*
-
-- UB : Double.MAX_VALUE (upper bound value)
-- NOM: anything between Double.MIN_VALUE and Double.MAX_VALUE (between range values)
-- LB : Double.MIN_VALUE (lower bound value)
-
-# 3 Test cases developed
+**Developing Test Cases**
 
 Based on our test strategy, we have the follow test methods. Any parts of our actual code that are not included here are not important for our testing outcomes and wil be improvised when making the JMock tests on eclipse. The finite min and max values are from the built in Double class to test the limits of double variables.
+
 
 **Class DataUtilities**
 
@@ -211,24 +131,27 @@ Testing **getLowerBound()**
 | getLowerBoundZeroValue | Between valid range values. Range: 0 to 10  | returuns: 0 |
 | getLowerBoundMinMaxTest | Between valid range values. Range: from built in Double class  | returns: finite min value |
 
-Note on Mocking:
 
-Mocking is an easy to use tool that allows us to simulate a response from another interface. The benefit is that it allowed us to set the return value to what we desired. In an integrated testing scenario, we needed to set up the interface which takes time and potentially introduces more bugs to our code than intended. One drawback we noticed is that the mocked object may not fully represent the behavior of the interface. Because we are only simulating certain responds we may miss other functions that could alter the result. Mocking is also hard to use. We feel this is introduced by black-box testing. We are trying to mimic a interface's response, but with no access to the source code, mocking becomes harder as we have to figure out what we need in the return type. For example, calculateColumnTotal(Values2D data, int column) does not tell us we need to return getRowCount() and getValue(int row, int column) from Values2D in order to make the calculations work. 
+Benefits & Drawbacks of Mocking:
+
+Mocking presents both benefits and drawbacks. On the positive side, it enabled isolation, which allowed us to test individual units of code without relying on external dependencies that might be slow or unreliable. This leads to faster test execution and simpler debugging. Mocking also allowed us to create scenarios that are difficult to replicate in real-world conditions, ensuring thorough test coverage. However, we found that mocking can lead to overlooking edge cases or misunderstanding how our code interacts with real-world dependencies. Excessive mocking can also make it harder to understand the true dependencies and flow of our system, potentially creating weak tests that break easily with code changes. Ultimately, mocking can accelerate test development and ensure quality, but it’s also important to validate the tests created against real-world scenarios to guarantee the application functions as required. 
 
 # 4 How the team work/effort was divided and managed
 
-The testing was divided into 2 teams. Two people were in charge of testing DataUtilities, and the other two tested Range. Since we already developed the testing cases, it was relatively easy to convert them into codes. This division allowed us to work independently with each other. We could push and pull requests from our git repo without any conflicts. After all test cases were created, we looked at each other's code and made adjustments as needed.
+The teamwork was divided up between our pair. We both decided to do DataUtilities tests and Range tests so we can simultaneously learn how to conduct both types of testing strategies. We evenly split the testing, worked independently and then came to peer review one another’s tests to catch any issues the other member missed. We used a peer-peer coding strategy.
 
-We learned that checking other's work is important, even when the code itself is easy to understand. Some test cases only have a few lines of code. However, during peer review we found multiple mistakes where the test cases were not following our test strategies. Some mistakes were assertion errors, some were caused by errors in initializing variables and mocks. Almost all errors were logic error which makes them hard to detect.
+Through this lab, we learned that peer reviewing each other’s testing code is very important as it improves the overall clarity of each test. We were able to catch each other's bugs and improve the quality of one another's tests. Managing everything was not difficult as we collaborated together and communicated well amongst one another.
+
 
 # 5 Difficulties encountered, challenges overcome, and lessons learned
 
-One difficulty we faced was how to setup our project in Eclipse and make it work across different machines. Following the tutorial, the JAR files were initially set up as external libraries. We would get an error saying Eclipse cannot find these JAR files. Then we realized that they needed to be set up as libraries and included in the Eclipse project.
+Using a new IDE was a difficulty we encountered. Since we are both VS Code users, learning how to use and initially set up Eclipse with all the JAR files was a challenge. Another challenge we encountered was when we first started coding the unit tests. Testing is different from writing a regular program, and is something we were not used to so it took time to absorb the new concepts. 
 
-Another challenge, as mentioned above, is to understand how the method works without the access to source code. This issue is not relevant in Range class as our testing cases did not require mocking. In DataUtilities class however, it took some time to get used to. Different methods may require different return types, and may call different methods from the mocked interface. All we can do is trail and error to figure out how to implement it.
+Range testing was intuitive, we were able to code out the scenarios from our planning phase quickly. We had done some variation for boundary testing in the past so it was familiar to us. However, DataUtilities was a completely brand new concept. Learning how to use JMock, creating mockeries, and making tests without the code was definitely a challenge, but with patience we were able to successfully complete it. 
 
-We learned that unit testing requires a lot of planning beforehand. If we just starts to write testing codes without a strategy, we could be missing a lot of testing cases and boundary conditions. The test cases will be messy and disorganized. Unit testing in our previous classes only needed us to write a couple test cases, and because we wrote the code, the unit tests were easy to write. In this assignment we are only giving documentations on the methods and we needed to learn how to develop test cases in a systematic way.
+Through this process, we now have a better understanding of black box testing methodologies. We have also learned the value of planning your tests beforehand. That made the process of creating the Unit Tests a lot smoother, and it is something we will implement moving forward as software engineers. 
+
 
 # 6 Comments/feedback on the lab itself
 
-As mentioned above, the tutorial section for how to setup the JAR files was not applicable to this assignment. It would be better if the instructions are on how to use the JAR files in a shared project setting. Another feedback is the documentations of certain methods. For example, calculateColumnTotal says for the data parameter "null not permitted", but it also mentions that "With invalid input, a total of zero will be returned", and throws "InvalidParameterException - if invalid data object is passed in." It is not abundantly clear what should happen if a null value is passed it. Should it displays zero or throws an exception? Is null considered an invalid parameter? We argue this is left to our interpretation and could result in incorrect testing results.
+This lab was beneficial and helped us extensively explore the different kinds of black boxing methodologies. It was challenging, but doable. However, the lab document can be overwhelming to look at so feedback would be to change the formatting of the lab. There is too much information all at once, and due to that, it takes a really long time just to understand what to do. 
