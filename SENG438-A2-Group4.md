@@ -21,7 +21,9 @@ Re-reading lecture slides, we created our testing plan based on black-box testin
 Based on our test strategy, we have the follow test methods. Any parts of our actual code that are not included here are not important for our testing outcomes and wil be improvised when making the JMock tests on eclipse. The finite min and max values are from the built in Double class to test the limits of double variables.
 
 
-**Class DataUtilities**
+
+**Class DataUtilities Test Plan**
+
 
 Testing **calculateColumnTotal()**
 
@@ -77,7 +79,12 @@ Testing **getCumulativePercentages()**
 | getCumulativePercentagesMinMaxTest |  key0: 0, key1: finite max value | returns key0: 0.0, key1: 1.0 |
 
 
-**Class Range**
+
+
+
+
+**Class Range Test Plan**
+
 Testing **getCentralValue()**
 
 | Testing Function | Equivalent Classes | Expected Outcomes | 
