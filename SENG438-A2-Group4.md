@@ -135,6 +135,11 @@ Testing **createNumberArray()**
 | createNumberArrayEmptyTest | data = {} | length: 0 |
 | createNumberArrayNullTest | data = null | calls InvalidParameterException|
 | createNumberArrayMinMaxTest | data = { using min and max values from Double built in class}; | length: compare data and result, for loop succeeds tests|
+
+Testing **createNumberArray2D()**
+
+| Testing Function | Equivalent Classes | Expected Outcomes | 
+| --- | --- | --- |
 | createNumberArray2DTest | data = { { 1.0, -2.5, 3.5, 0 }, { -5.0, 6.5, 7.5, 8.5 } }; | length: dataLength, for loop succeeds tests for all rows and cols |
 | createNumberArray2DEmptyTest |  data = {} | length: 0 |
 | createNumberArray2DNullTest | data = null; | calls InvalidParameterException|
@@ -147,9 +152,10 @@ Testing **getCumulativePercentages()**
 | getCumulativePercentagesTest | key0: 5, key1: 9 key2: 2 | results key0: 0.3125, key1: 0.875, key2: 1.0 |
 | getCumulativePercentagesEmptyTest |  items: 0 | results: 0  |
 | getCumulativePercentagesZeroTest |  key0: 0, key1: 0 | results key0: 0.0, key1: 0.0 |
-| getCumulativePercentagesNullTest |  key0: 5, key1: 9 key2: 2 | results key0: 0.3125, key1: 0.875, key2: 1.0 |
-| getCumulativePercentagesExceptionTest | getCumulativePercentagesExceptionTest | E5; |
-| getCumulativePercentagesMinMaxTest | getCumulativePercentagesMinMaxTest | E1; UB; LB = 0; |
+| getCumulativePercentagesNullTest |  items: null | InvalidParameterException and returns: null for getItemCount|
+| getCumulativePercentagesExceptionTest | key0: 0, key1: 'a' | calls InvalidParameterException |
+| getCumulativePercentagesMinMaxTest |  key0: 0, key1: finite max value | returns key0: 0.0, key1: 1.0 |
+
 
 **Class Range**
 Testing **getCentralValue()**
