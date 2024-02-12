@@ -529,6 +529,6 @@ public class DataUtilitiesTest extends DataUtilities {
 
 	@AfterClass
 	public static void tearDownAfterClass() throws Exception {
-		System.out.println("DataUtilitiesTest completed.");
+		System.out.println("DataUtilities Testing completed!");
 	}
 }
