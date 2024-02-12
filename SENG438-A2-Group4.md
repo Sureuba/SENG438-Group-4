@@ -164,7 +164,6 @@ Testing **constrain()**
 | constrainShouldBePositiveValue | Input between valid range values. Range: 0 to 10 | returns: 5.4 |
 | constrainShouldBeNegativeValue | Input between valid range values. Range: -10 to 0 | returns: -5.4 
 | constrainShouldBeZero | Input between valid range values. Range: 0 to 10 | returns: 10 |
-
 | constrainShouldBeUpperBoundaryValue | Input not between valid range values. Range: 0 to 10 | returns: 10|
 | constrainShouldBeLowerBoundaryValue |  Input not between valid range values. Range: 0 to 10 | returns: 0|
 | constrainMaxTest |Testing the finite ranges from built in Double class | returns: finite Max value|
