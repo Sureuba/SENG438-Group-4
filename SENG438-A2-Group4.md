@@ -13,8 +13,9 @@ The goal of this assignment is to learn how to use black box testing methodolies
 
 # 2 Detailed description of unit test strategy
 
-Re-reading lecture slides, we created our testing plan based on black-box testing since we were not given the contents of the JFreeChart. Testing 5 methods from  the DataUtilities class, and chose 5 methods from the Range class that required no mocking. For the Range class we desided to do seperate in range and out range tests for all of the 5 functions as well as outlier tests for a few extra cases. We do not test the constructor since the initialization is before the test methods, assuming that the Range objects have no errors upon creation.
+Re-reading lecture slides, we created our testing plan based on black-box testing since we were not given the contents of the JFreeChart. Testing 5 methods from  the DataUtilities class, and chose 5 methods from the Range class that required no mocking. For the Range class we decided to do seperate in range and out range tests for all of the 5 functions as well as outlier tests for a few extra cases. We do not test the constructor since the initialization is before the test methods, assuming that the Range objects have no errors upon creation.
 
+More on our testing strategy; we want to test positive, negative, and zero values for the ranges. For inputs we used above upper boundary and below lower boundary values to test if both worked as well as the built in Double class max and min values to test finite limits. Using edge values if needed as well. For DataUtilities class this we use JMock, creating mockery expectations before each test case and then using assertion codes to check if the results are correct. Using valid and invalid inputs tests to see if nulls and out of bound inputs call the correct exceptions and faulty messages. 
 
 **Developing Test Cases**
 
