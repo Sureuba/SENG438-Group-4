@@ -134,7 +134,7 @@ public class DataUtilitiesTest extends DataUtilities {
 		assertEquals(Double.MIN_VALUE + Double.MAX_VALUE, result, .000000001d);
 	}
 
-	// calculates the column total of the second column
+	
 	
 	@Test  // this test covers normal values for variable data and column
 	public void calculateColumnTotalColumnOneTest() {
@@ -177,8 +177,8 @@ public class DataUtilitiesTest extends DataUtilities {
 		assertEquals(10.0, result, .000000001d);
 	}
 
-	// this test covers normal values for variable data and row
-	@Test
+	
+	@Test // this test covers normal values for variable data and row
 	public void calculateRowTotalNegativeTest() {
 		mockery.checking(new Expectations() {
 			{
@@ -194,8 +194,8 @@ public class DataUtilitiesTest extends DataUtilities {
 		assertEquals(-15, result, .000000001d);
 	}
 
-	// this test covers normal values for variable data and row
-	@Test
+	
+	@Test // this test covers normal values for variable data and row
 	public void calculateRowTotalZeroTest() {
 		mockery.checking(new Expectations() {
 			{
@@ -211,8 +211,8 @@ public class DataUtilitiesTest extends DataUtilities {
 		assertEquals(0, result, .000000001d);
 	}
 	
-	// this test covers invalid values for variable data and normal values for row
-	@Test
+	
+	@Test // this test covers invalid values for variable data and normal values for row
 	public void calculateRowTotalNullTest() {
 		mockery.checking(new Expectations() {
 			{
@@ -228,8 +228,8 @@ public class DataUtilitiesTest extends DataUtilities {
 		assertEquals(0, result, .000000001d);
 	}
 	
-	// this test covers invalid values for variable data and normal values for row
-	@Test(expected = InvalidParameterException.class)
+	@Test// this test covers invalid values for variable data and normal values for row
+	(expected = InvalidParameterException.class)
 	public void calculateRowTotalExceptionTest() {
 		mockery.checking(new Expectations() {
 			{
@@ -244,8 +244,8 @@ public class DataUtilitiesTest extends DataUtilities {
 		DataUtilities.calculateRowTotal(values, 0);
 	}
 
-	// this test covers maximum and minimum values for variable data and normal values for row
-	@Test
+	
+	@Test // this test covers maximum and minimum values for variable data and normal values for row
 	public void calculateRowMinMaxTest() {
 		mockery.checking(new Expectations() {
 			{
@@ -261,9 +261,9 @@ public class DataUtilitiesTest extends DataUtilities {
 		assertEquals(Double.MIN_VALUE + Double.MAX_VALUE, result, .000000001d);
 	}
 
-	// calculates the column total of the second row
-	// this test covers normal values for variable data and row
-	@Test
+	
+	
+	@Test // this test covers normal values for variable data and row
 	public void calculateRowTotalRowOneTest() {
 		mockery.checking(new Expectations() {
 			{
@@ -288,7 +288,7 @@ public class DataUtilitiesTest extends DataUtilities {
 		assertEquals(13.5, result, .000000001d);
 	}
 	
-	//Testing createNumberArray() **************************************************************8
+//Testing createNumberArray() **************************************************************8
 
 	
 	@Test // this test covers normal values for variable data
@@ -303,8 +303,8 @@ public class DataUtilitiesTest extends DataUtilities {
 		}
 	}
 
-	// this test covers empty values for variable data
-	@Test
+	
+	@Test // this test covers empty values for variable data
 	public void createNumberArrayEmptyTest() {
 		double[] data = {};
 		Number[] result = DataUtilities.createNumberArray(data);
@@ -312,15 +312,16 @@ public class DataUtilitiesTest extends DataUtilities {
 		assertEquals(0, result.length);
 	}
 
-	// this test covers invalid values for variable data
-	@Test(expected = InvalidParameterException.class)
+	
+	@Test // this test covers invalid values for variable data
+	(expected = InvalidParameterException.class)
 	public void createNumberArrayNullTest() {
 		double[] data = null;
 		DataUtilities.createNumberArray(data);
 	}
 	
-	// this test covers maximum and minimum values for variable data
-	@Test
+	
+	@Test  // this test covers maximum and minimum values for variable data
 	public void createNumberArrayMinMaxTest() {
 		double[] data = { Double.MAX_VALUE, Double.MIN_VALUE, Double.MIN_VALUE, Double.MAX_VALUE };
 		Number[] result = DataUtilities.createNumberArray(data);
@@ -332,8 +333,8 @@ public class DataUtilitiesTest extends DataUtilities {
 		}
 	}
 	
-	// this test covers normal values for variable data
-	@Test
+	
+	@Test // this test covers normal values for variable data
 	public void createNumberArray2DTest() {
 		double[][] data = { { 1.0, -2.5, 3.5, 0 }, { -5.0, 6.5, 7.5, 8.5 } };
 		Number[][] result = DataUtilities.createNumberArray2D(data);
@@ -350,8 +351,8 @@ public class DataUtilitiesTest extends DataUtilities {
 		}
 	}
 
-	// this test covers empty values for variable data
-	@Test
+	
+	@Test // this test covers empty values for variable data
 	public void createNumberArray2DEmptyTest() {
 		double[][] data = {};
 		Number[][] result = DataUtilities.createNumberArray2D(data);
@@ -359,15 +360,16 @@ public class DataUtilitiesTest extends DataUtilities {
 		assertEquals(0, result.length);
 	}
 
-	// this test covers invalid values for variable data
-	@Test(expected = InvalidParameterException.class)
+	
+	@Test // this test covers invalid values for variable data
+	(expected = InvalidParameterException.class)
 	public void createNumberArray2DNullTest() {
 		double[][] data = null;
 		DataUtilities.createNumberArray2D(data);
 	}
 	
-	// this test covers maximum and minimum values for variable data
-	@Test
+	
+	@Test  // this test covers maximum and minimum values for variable data
 	public void createNumberArray2DMinMaxTest() {
 		double[][] data = { { Double.MAX_VALUE, Double.MIN_VALUE, Double.MIN_VALUE, Double.MAX_VALUE },
 				{ Double.MAX_VALUE, Double.MIN_VALUE, Double.MIN_VALUE, Double.MAX_VALUE } };
@@ -387,8 +389,8 @@ public class DataUtilitiesTest extends DataUtilities {
 	
 //Testing createNumberArray() **************************************************************8
 
-	// this test covers normal values for variable data
-	@Test
+	
+	@Test  // this test covers normal values for variable data
 	public void getCumulativePercentagesTest() {
 		mockery.checking(new Expectations() {
 			{
@@ -416,8 +418,8 @@ public class DataUtilitiesTest extends DataUtilities {
 		assertEquals(1.0, result.getValue(2));
 	}
 	
-	// this test covers empty values for variable data
-	@Test
+	
+	@Test  // this test covers empty values for variable data
 	public void getCumulativePercentagesEmptyTest() {
 		mockery.checking(new Expectations() {
 			{
@@ -431,9 +433,9 @@ public class DataUtilitiesTest extends DataUtilities {
 		assertEquals(0, result.getItemCount());
 	}
 	
-	// the cumulative percentage of 0 should be 0%
-	// this test covers normal values for variable data
-	@Test
+	
+	
+	@Test  // this test covers normal values for variable data
 	public void getCumulativePercentagesZeroTest() {
 		mockery.checking(new Expectations() {
 			{
@@ -456,8 +458,9 @@ public class DataUtilitiesTest extends DataUtilities {
 		assertEquals(0.0, result.getValue(1));
 	}
 
-	// this test covers invalid values for variable data
-	@Test(expected = InvalidParameterException.class)
+	
+	@Test  // this test covers invalid values for variable data
+	(expected = InvalidParameterException.class)
 	public void getCumulativePercentagesNullTest() {
 		mockery.checking(new Expectations() {
 			{
@@ -470,8 +473,9 @@ public class DataUtilitiesTest extends DataUtilities {
 
 	}
 	
-	// this test covers invalid values for variable data
-	@Test(expected = InvalidParameterException.class)
+	
+	@Test  // this test covers invalid values for variable data
+	(expected = InvalidParameterException.class)
 	public void getCumulativePercentagesExceptionTest() {
 		mockery.checking(new Expectations() {
 			{
@@ -492,8 +496,8 @@ public class DataUtilitiesTest extends DataUtilities {
 
 	}
 	
-	// this test covers maximum and minimum values for variable data
-	@Test
+	
+	@Test // this test covers maximum and minimum values for variable data
 	public void getCumulativePercentagesMinMaxTest() {
 		mockery.checking(new Expectations() {
 			{
