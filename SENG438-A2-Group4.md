@@ -149,14 +149,14 @@ Benefits & Drawbacks of Mocking:
 
 Mocking presents both benefits and drawbacks. On the positive side, it enabled isolation, which allowed us to test individual units of code without relying on external dependencies that might be slow or unreliable. This leads to faster test execution and simpler debugging. Mocking also allowed us to create scenarios that are difficult to replicate in real-world conditions, ensuring thorough test coverage. However, we found that mocking can lead to overlooking edge cases or misunderstanding how our code interacts with real-world dependencies. Excessive mocking can also make it harder to understand the true dependencies and flow of our system, potentially creating weak tests that break easily with code changes. Ultimately, mocking can accelerate test development and ensure quality, but it’s also important to validate the tests created against real-world scenarios to guarantee the application functions as required. 
 
-# 4 How the team work/effort was divided and managed
+# 3 How the team work/effort was divided and managed
 
 The teamwork was divided up between our pair. We both decided to do DataUtilities tests and Range tests so we can simultaneously learn how to conduct both types of testing strategies. We evenly split the testing, worked independently and then came to peer review one another’s tests to catch any issues the other member missed. We used a peer-peer coding strategy.
 
 Through this lab, we learned that peer reviewing each other’s testing code is very important as it improves the overall clarity of each test. We were able to catch each other's bugs and improve the quality of one another's tests. Managing everything was not difficult as we collaborated together and communicated well amongst one another.
 
 
-# 5 Difficulties encountered, challenges overcome, and lessons learned
+# 4 Difficulties encountered, challenges overcome, and lessons learned
 
 Using a new IDE was a difficulty we encountered. Since we are both VS Code users, learning how to use and initially set up Eclipse with all the JAR files was a challenge. Another challenge we encountered was when we first started coding the unit tests. Testing is different from writing a regular program, and is something we were not used to so it took time to absorb the new concepts. 
 
@@ -165,6 +165,6 @@ Range testing was intuitive, we were able to code out the scenarios from our pla
 Through this process, we now have a better understanding of black box testing methodologies. We have also learned the value of planning your tests beforehand. That made the process of creating the Unit Tests a lot smoother, and it is something we will implement moving forward as software engineers. 
 
 
-# 6 Comments/feedback on the lab itself
+# 5 Comments/feedback on the lab itself
 
 This lab was beneficial and helped us extensively explore the different kinds of black boxing methodologies. It was challenging, but doable. However, the lab document can be overwhelming to look at so feedback would be to change the formatting of the lab. There is too much information all at once, and due to that, it takes a really long time just to understand what to do. 
