@@ -17,13 +17,13 @@ Re-reading lecture slides, we created our testing plan based on black-box testin
 
 More on our testing strategy; we want to test positive, negative, and zero values for the ranges. For inputs we used above upper boundary and below lower boundary values to test if both worked as well as the built in Double class max and min values to test finite limits. Using edge values if needed as well. For DataUtilities class this we use JMock, creating mockery expectations before each test case and then using assertion codes to check if the results are correct. Using valid and invalid inputs tests to see if nulls and out of bound inputs call the correct exceptions and faulty messages. 
 
-We used black box testing strategies like equivalence testing and bubndary value analysis. We used equivalence partitioning to group input values into classes with similar expected behavior. For example, valid integer inputs might form one class, invalid inputs like strings another. By testing representative values from each class, we aimed to achieve efficient coverage.Boundary value analysis focused on input values around class boundaries (minimum/maximum range limits). We tested values above and below these boundaries to detect potential issues at the edges to detect edge cases.
+We used black box testing strategies like equivalence testing and boundary value analysis. We used equivalence partitioning to group input values into classes with similar expected behavior. For example, valid integer inputs might form one class, invalid inputs like strings another. By testing representative values from each class, we aimed to achieve efficient coverage.Boundary value analysis focused on input values around class boundaries (minimum/maximum range limits). We tested values above and below these boundaries to detect potential issues at the edges to detect edge cases.
 
 **Developing Test Cases**
 
 Based on our test strategy, we have the follow test methods. The finite min and max values are from the built in Double class to test the limits of double variables.
 
-NOTE: Any parts of our actual code that are not included here are not important for our testing outcomes and wil be improvised when making the JMock tests on eclipse.
+NOTE: Any parts of our actual code that are not included here are not important for our testing outcomes and will be improvised when making the JMock tests on eclipse.
 
 
 **Class DataUtilities Test Plan**
